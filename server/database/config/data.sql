@@ -1,4 +1,4 @@
-
+BEGIN;
 
 DROP TABLE IF EXISTS users, posts, comments CASCADE;
 
