@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 BEGIN;
+=======
+
+>>>>>>> 67754cc92a03f1b64e4c34c6c4541deff8e7d4fe
 
 DROP TABLE IF EXISTS users, posts, comments CASCADE;
 
