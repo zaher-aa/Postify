@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./server/",
     "dev": "nodemon ./server/",
-    "test": "NODE_ENV=test jest --watchAll"
+    "test": "NODE_ENV=test jest"
   },
   "repository": {
     "type": "git",
