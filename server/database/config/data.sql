@@ -1,6 +1,4 @@
-
 BEGIN;
-
 
 DROP TABLE IF EXISTS users, posts, comments CASCADE;
 
@@ -24,8 +22,8 @@ CREATE TABLE posts (
 CREATE TABLE comments (
   id SERIAL PRIMARY KEY,
   content TEXT NOT NULL,
-  user_id INTEGER REFERENCES users(id),
-  post_id INTEGER REFERENCES posts(id)
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  post_id INTEGER REFERENCES posts(id) ON DELETE CASCADE
 );
 
 INSERT INTO users (username, email, password) VALUES 

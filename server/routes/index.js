@@ -11,6 +11,7 @@ const {
   serverError,
   addPost,
   getPosts,
+  deletePost,
 } = require('../controllers');
 
 router.get('/check-user', checkUser);
@@ -21,6 +22,7 @@ router.get('/user-info/:id', handleUserInfo);
 router.get('/user-posts/:id', getUserPosts);
 router.get('/getPosts', getPosts);
 router.post('/addPost', addPost);
+router.post('/delete-post', deletePost);
 router.use(clientError);
 router.use(serverError);
 
