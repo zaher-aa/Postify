@@ -1,110 +1,189 @@
-header{
-   
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding:0 70px;
-    background-color: #fff;
-    border-bottom:1px solid #d8d8d8;
-
+* {
+  font-family: 'Poppins', sans-serif;
+}
+#logo {
+  color: rgb(98, 98, 192);
+  font-weight: 600;
+  font-size: larger;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 70px;
+  background-color: #fff;
+  border-bottom: 1px solid #d8d8d8;
 }
 .container {
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 
-    width: 100vw;
+  width: 100vw;
+}
+.createPost {
+  display: flex;
+  flex-direction: column;
+}
+.createPostContainer {
+  padding: 20px 40px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+.createPostContainer input {
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.createPostContainer textarea {
+  margin-bottom: 20px;
+}
+.createPostHeader {
+  padding: 10px 40px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+}
+.createPost {
+  display: none;
+  background-color: #fff;
+  position: fixed;
+  z-index: 1; /* Sit on top */
+  left: 25%;
+  top: 20%;
+  width: 50%;
+  border: 1px solid #d8d8d8;
+}
 
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+.links {
+  list-style: none;
+}
+
+.links li {
+  display: inline-block;
+  padding: 0 20px;
+  color: rgb(98, 98, 192);
+  cursor: pointer;
+}
+
+.icons {
+  list-style: none;
+  padding: 0 10px;
+}
+
+.icons li {
+  display: inline-block;
+  padding: 1 10px;
+}
+
+.icons li a {
+  text-decoration: none;
+}
+.caption {
+  margin: 0 2px 10px 10px;
+}
+
+.posts {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  flex-wrap: wrap;
+}
+.post {
+  width: 50vw;
+  border: 1px solid #d8d8d8;
+  margin-bottom: 30px;
+}
+.img {
+  width: 50vw;
+}
+.headerPost {
+  padding: 0 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #d8d8d8;
+}
+.publicherInfo {
+  display: flex;
+}
+.publicherInfo img {
+  padding-top: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.addPost {
+  margin: 0 20%;
+  width: 50%;
+  height: 30px;
+  background-color: rgb(98, 98, 192);
+  border: none;
+  border-radius: 5px;
+}
+.id {
+  display: none;
+}
+
+#formTitle {
+  color: rgb(98, 98, 192);
+  font-weight: 600;
+  font-size: larger;
+}
+@media (max-width: 567px) {
+  .container {
+    width: 550px;
   }
-a{
-    text-decoration: none;
-    color :#000;
-}
-
-.links{
-    list-style: none;
-}
-
-.links li{
-    display:inline-block;
-    padding :0 20px;
-
-}
-
-.links li a{
-    text-decoration: none;
-}
-
-.icons{
-    list-style: none;
-}
-
-.icons li{
-    display:inline-block;
-    padding :0 20px;
-
-}
-
-.icons li a{
-    text-decoration: none;
-}
-
-.posts{
-    
-
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    flex-wrap: wrap;
-}
-.post{
-    width: 50vw;
-    border:1px solid #d8d8d8;
-    margin-bottom :30px;
-}
-.img{
-    width: 50vw;
-}
-.headerPost{
-    padding: 0 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #d8d8d8;
+  header {
+    padding: 0 10px;
   }
-  .publicherInfo{
-      display:flex;
-
+  .links li {
+    padding: 0 10px;
   }
-.publicherInfo img{
-    padding-top: 10px;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      margin-right: 10px;
+  .publicherInfo img {
+    width: 25px;
+    height: 25px;
+  }
+  .createPost {
+    position: fixed;
+    z-index: 1;
+    left: 10%;
+    top: 20%;
+    width: 80%;
   }
 
-@media (min-width: 567px) {
-    .container {
-      width: 550px;
-    }
+  .createPostContainer {
+    padding: 10px 20px;
   }
-  @media (min-width: 768px) {
-    .container {
-      width: 750px;
-    }
+
+  .addPost {
+    margin: 0 5%;
+    width: 80%;
   }
-  @media (min-width: 992px) {
-    .container {
-      width: 970px;
-    }
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
   }
-  @media (min-width: 1200px) {
-    .container {
-      width: 1170px;
-    }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
   }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
 
 .user-image {
   cursor: pointer;

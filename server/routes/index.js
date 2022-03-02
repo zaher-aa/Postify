@@ -9,6 +9,8 @@ const {
   getUserPosts,
   clientError,
   serverError,
+  addPost,
+  getPosts,
 } = require('../controllers');
 
 router.get('/check-user', checkUser);
@@ -17,6 +19,8 @@ router.get('/home', homePageHandler);
 router.get('/profile', handleUserProfilePage);
 router.get('/user-info/:id', handleUserInfo);
 router.get('/user-posts/:id', getUserPosts);
+router.get('/getPosts', getPosts);
+router.post('/addPost', addPost);
 router.use(clientError);
 router.use(serverError);
 

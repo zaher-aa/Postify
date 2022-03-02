@@ -6,6 +6,8 @@ const handleUserInfo = require('./handleUserInfo');
 const getUserPosts = require('./getUserPosts');
 const clientError = require('./clientError');
 const serverError = require('./serverError');
+const addPost=require('./addPost')
+const getPosts=require('./getPost')
 
 module.exports = {
   checkUser,
@@ -16,4 +18,6 @@ module.exports = {
   getUserPosts,
   clientError,
   serverError,
+  addPost,
+  getPosts
 };
