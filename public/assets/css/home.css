@@ -105,3 +105,7 @@ a{
       width: 1170px;
     }
   }
+
+.user-image {
+  cursor: pointer;
+}
