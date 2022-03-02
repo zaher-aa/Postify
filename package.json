@@ -4,7 +4,7 @@
   "description": "Use postify to create posts",
   "main": "index.js",
   "scripts": {
-    "start": "node ./server/",
+    "start": "NODE_ENV=production node ./server/",
     "dev": "NODE_ENV=development nodemon ./server/",
     "test": "NODE_ENV=test jest"
   },
@@ -23,7 +23,8 @@
     "env2": "^2.2.2",
     "express": "^4.17.3",
     "helmet": "^5.0.2",
-    "pg": "^8.7.3"
+    "pg": "^8.7.3",
+    "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
     "eslint": "^8.10.0",
