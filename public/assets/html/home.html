@@ -15,15 +15,20 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
    <header>
-       <a href="#">postify</a>
+     
+        <a href="#">postify</a>
+    
+      
+  
        <nav>
            <ul class="links">
                <li><a href="#"><i class="fa fa-user" style="font-size:24px"></i></a></li>
                <li><a href="#"><i class="fa fa-home" style="font-size:24px"></i></a></li>
-               <li><a href="#"><i class="fa fa-plus"style="font-size:24px" ></i></a></li>
+               <li id="plus"><a href="#"><i class="fa fa-plus"style="font-size:24px" ></i></a></li>
            </ul>
        </nav>
        <a href="#"> welcome farah</a>
@@ -33,31 +38,30 @@
     <div class="posts">
        
       
-      <div class="post">
+    <!-- <div class="post">
         <div class="headerPost">
             <div class="publicherInfo">
                 <img src="../users.jpeg">
-                <p>farah  shaqoura</p>
+                <p class="userName"></p>
             </div>
             <div class="icon">
                 <i class="fa fa-ellipsis-v"></i>
             </div>
           </div>
           <div class="contant">
-              <div>
-                <img src="../image.png" alt="post-img" class="img"> 
               
-              </div>
+                <img class="image" alt="post-img" class="img"> 
+              
+             
               <div>
                 <ul class="icons">
-                    <li><a href="#"><i class="fa fa-heart" style="font-size:24px" ></i></a></li>
-                    <li><a href="#"><i class="fa fa-comments-o" style="font-size:24px"></i></a></li>
+                    <li><i class="fa fa-heart" style="font-size:24px" ></i></li>
+                    <li><i class="fa fa-comments-o" style="font-size:24px"></i></li>
                   
                 </ul>
               </div>
               <div>
-                  <p>Lorem Ipsum isssssssimply dummmmmy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                       when an unknown printer took a galley of type and scrambled </p>
+                  <p class="caption"> </p>
               </div>
              
             
@@ -65,8 +69,40 @@
           </div>
     </div>
        
-
+-->
     </div>
    </container>
+   <div>
+       <section class="createPost">
+           <div class="createPostHeader">
+            <p> create post</p>
+            <p id="close"><i class="fa fa-close"></i></p> 
+           </div>
+           <div>
+  
+       <form action="/addPost" method="post">
+           <div class="createPostContainer">
+        <label for="username"><b>user Name</b></label>
+           <input
+           type="text"
+           placeholder="your text"
+           name="username"
+           value=""
+           id="userName"
+           required>
+           <label for="post"><b>post</b></label>
+           <textarea name ="post" rows="8" cols="40"  required ></textarea>
+           <label for="url"><b>Image Url</b></label>
+           <textarea name ="url" rows="2" cols="40"  required></textarea>
+           <div>
+               <button type="submit" class="addPost">post</button>
+           </div>
+        </div>
+       </form>
+    </div>
+    </section>
+       <script src="../js/fetch.js"></script>
+       <script src="../js/home.js"></script>
+   </div>
 </body>
 </html>
