@@ -1,7 +1,6 @@
-const getAllpost =require('../database/queries/getPost')
-const getPosts=(req,res)=>{
-    
-    getAllpost().then((response) => res.json(response.rows))
+const getAllpost = require('../database/queries/getPost');
 
-}
-module.exports=getPosts;
+const getPosts = (req, res) => {
+  getAllpost().then((response) => res.json(response.rows));
+};
+module.exports = getPosts;
