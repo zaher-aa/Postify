@@ -14,7 +14,8 @@ CREATE TABLE posts (
   title VARCHAR(255) NOT NULL,
   content TEXT NOT NULL,
   likes INTEGER NOT NULL,
-  image_url TEXT NOT NULL,
+  comments INTEGER NOT NULL,
+  image_url TEXT,
   user_id INTEGER REFERENCES users(id)
 );
 
@@ -32,12 +33,12 @@ INSERT INTO users (username, email, password) VALUES
   ('John', 'john@gmail.com', 'Jaredpassword'),
   ('Ali', 'Ali@gmail.com', 'Alipassword');
 
-INSERT INTO posts(title, content, likes, image_url, user_id) VALUES 
-  ('Post 1', 'This is the first post', 10, 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', 1),
-  ('Post 2', 'This is the second post', 100, 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', 2),
-  ('Post 3', 'This is the third post', 0, 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', 3),
-  ('Post 4', 'This is the fourth post', 34, 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', 4),
-  ('Post 5', 'This is the fifth post', 646, 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', 5);
+INSERT INTO posts(title, content, likes, comments, image_url, user_id) VALUES 
+  ('Post 1', 'This is the first post', 10, 5, 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', 1),
+  ('Post 2', 'This is the second post', 100, 5, 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', 2),
+  ('Post 3', 'This is the third post', 0, 5, 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', 3),
+  ('Post 4', 'This is the fourth post', 34, 5, 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', 4),
+  ('Post 5', 'This is the fifth post', 646, 5, 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', 5);
 
 INSERT INTO comments (content, user_id, post_id) VALUES
   ('This is the first comment', 1, 1),
