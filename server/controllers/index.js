@@ -10,6 +10,7 @@ const addPost=require('./addPost')
 const getPosts=require('./getPost')
 const  addCommenttoData=require('./addComment')
 const  fetchComments =require('./getComments')
+const deletePost = require('./deletePost');
 
 module.exports = {
   checkUser,
@@ -23,5 +24,6 @@ module.exports = {
   addPost,
   getPosts,
   addCommenttoData,
-  fetchComments
+  fetchComments,
+  deletePost,
 };

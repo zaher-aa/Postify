@@ -149,6 +149,8 @@ a {
   width: 50%;
   background-color: #FFF;
   height: 80%;
+  display: none;
+  overflow: auto;
 }
 .headerCommentSection{
   padding:0 40px;

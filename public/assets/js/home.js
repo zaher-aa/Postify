@@ -73,9 +73,26 @@ const renderComment=(comment=>{
 
 
 
+document.addEventListener('click', (e) => {
+  if (!e.target.matches('.delete')) return;
+  const postId = e.target.parentElement.parentElement.dataset.id;
+  fetch('/delete-post', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ id: postId }),
+  })
+    .then((res) => res.json())
+    .then(() => {
+      e.target.parentElement.parentElement.remove();
+    })
+    .catch((err) => console.log(err));
+});
+
 const renderPost = ((obj) => {
   const post = document.createElement('div');
-  post.setAttribute('data-userid', obj.id);
+  post.setAttribute('data-id', obj.id);
   post.className = 'post';
 
   const headerPost = document.createElement('div');
@@ -89,13 +106,12 @@ const renderPost = ((obj) => {
   title.textContent = obj.title;
   publicherInfo.appendChild(userImage);
   publicherInfo.appendChild(title);
-  const icon = document.createElement('div');
-  icon.className = 'icon';
-  const ellipsisIcon = document.createElement('i');
-  ellipsisIcon.className = 'fa fa-ellipsis-v';
-  icon.append(ellipsisIcon);
+  const del = document.createElement('div');
+  del.className = 'delete';
+  del.textContent = 'Delete';
+  del.style.cursor = 'pointer';
   headerPost.append(publicherInfo);
-  headerPost.append(icon);
+  headerPost.append(del);
 
   const content = document.createElement('div');
   content.className = 'contant';
@@ -144,6 +160,7 @@ const passDataToFetch = (postInfo) => {
     })
     .catch((err) => console.log(err));
 };
+
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const postInfo = e.target;
@@ -158,12 +175,6 @@ useridText.value = localStorage.getItem('user_id');
 const mapPosts = (arr) => {
   arr.map((post) => {
     renderPost(post);
-  });
-  const headerPost = document.querySelectorAll('.headerPost');
-  headerPost.forEach((element) => {
-    element.addEventListener('click', (e) => {
-      console.log(e.currentTarget.parentElement.dataset.userid);
-    });
   });
 };
 
