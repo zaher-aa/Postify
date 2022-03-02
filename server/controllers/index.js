@@ -6,8 +6,14 @@ const handleUserInfo = require('./handleUserInfo');
 const getUserPosts = require('./getUserPosts');
 const clientError = require('./clientError');
 const serverError = require('./serverError');
-const addPost = require('./addPost');
-const getPosts = require('./getPost');
+
+const addPost=require('./addPost')
+const getPosts=require('./getPost')
+const  addCommenttoData=require('./addComment')
+const  fetchComments =require('./getComments')
+
+
+
 const deletePost = require('./deletePost');
 
 module.exports = {
@@ -21,5 +27,7 @@ module.exports = {
   serverError,
   addPost,
   getPosts,
-  deletePost,
+  addCommenttoData,
+  fetchComments,
+  deletePost
 };
