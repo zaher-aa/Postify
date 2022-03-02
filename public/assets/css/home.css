@@ -17,6 +17,46 @@ header{
     width: 100vw;
 
   }
+.createPost{
+    display: flex;
+    flex-direction: column;
+
+  }
+.createPostContainer {
+  padding: 20px 40px;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  
+
+  
+}
+.createPostContainer input{
+  padding:10px;
+margin-bottom: 20px;
+}
+.createPostContainer textarea{
+  margin-bottom: 20px;
+}
+.createPostHeader{
+  padding: 10px 40px;
+  display:flex;
+  justify-content: space-between;
+  font-size: 18px;
+ 
+ 
+}
+.createPost{
+  display: none;
+  background-color: #fff;
+  position: fixed;
+  z-index: 1; /* Sit on top */
+  left: 25%;
+  top: 20%;
+  width: 50%;
+  border:1px solid #d8d8d8;
+}
+
 a{
     text-decoration: none;
     color :#000;
@@ -68,7 +108,8 @@ a{
 }
 .headerPost{
     padding: 0 20px;
-      display: flex;
+     
+    display: flex;
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid #d8d8d8;
@@ -84,7 +125,13 @@ a{
       border-radius: 50%;
       margin-right: 10px;
   }
-
+  .addPost{
+    width: 50%;
+    height: 30px;
+  }
+  .id{
+    display: none;
+  }
 @media (min-width: 567px) {
     .container {
       width: 550px;
