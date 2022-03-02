@@ -12,20 +12,22 @@
       <h1 class="logo">Postify</h1>
 
       <div class="forms">
-        <form action="/create-user" method="post" class="register" autocomplete="off">
+        <form method="post" class="register" autocomplete="off">
           <h2>Register</h2>
           <input type="text" name="username" placeholder="Username" />
           <input type="email" name="email" placeholder="Email" />
           <input type="password" name="password" placeholder="Password" />
           <input type="submit" value="Register" />
         </form>
-        <form action="/log-in" method="get" class="log-in" autocomplete="off">
+        <form method="get" class="log-in" autocomplete="off">
           <h2>Log In</h2>
-          <input type="text" name="username" placeholder="Username" />
+          <input type="email" name="email" placeholder="Email" />
           <input type="password" name="password" placeholder="Password" />
           <input type="submit" value="Login" />
         </form>
       </div>
     </div>
+    <script src="./assets/js/fetch.js"></script>
+    <script src="./assets/js/login.js"></script>
   </body>
 </html>
