@@ -9,6 +9,7 @@ const publicherInfo=document.querySelector('.publicherInfo')
 const posts =document.querySelector('.posts')
 const useridText=document.querySelector('.id')
 const form =document.querySelector('#form')
+const addBtn=document.querySelector('.addPost')
 
 const passDataToFetch=(postInfo)=>{
    const username=postInfo.username.value;
@@ -17,7 +18,8 @@ const passDataToFetch=(postInfo)=>{
    const id=localStorage.getItem('user_id')
    
    addUser({username,url,content,id}, 'POST', '/addPost')
-    .then((data) => console.log(data.id))
+    .then((data) => renderPost(data[0]))
+   
     .catch((err) => alert(err.message));
 
 }
@@ -26,6 +28,8 @@ form.addEventListener('submit',(e)=>{
    const postInfo=e.target;
    passDataToFetch(postInfo)
 })
+
+
 window.onload=()=>{
 getUser('/getPosts').then((data)=>mapPosts(data)).catch((err) => alert(err.message));}
 useridText.value=localStorage.getItem('user_id')
@@ -71,7 +75,7 @@ const renderPost=((obj)=>{
    content.className='contant'
    
    const image=document.createElement('img')
-   image.className='image';
+   image.className='img';
    image.src=obj.image_url;
    const div=document.createElement('div')
    const ul=document.createElement('ul')
@@ -103,7 +107,17 @@ plusIcon.addEventListener('click',()=>{
     
     postForm.style.display ='flex';
     container.style.opacity= 0.2;
+    plusIcon.style.color= '#000';
+
  })
+ addBtn.addEventListener('click',()=>{
+   postForm.style.display ='none';
+   container.style.opacity= 1;
+   plusIcon.style.color='rgb(98, 98, 192)'
+})
+
 closeIcon.addEventListener('click',()=>{
     postForm.style.display ='none';
-    container.style.opacity= 1;})
+    container.style.opacity= 1;
+    plusIcon.style.color='rgb(98, 98, 192)'
+})
