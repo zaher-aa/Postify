@@ -13,7 +13,8 @@ const {
   getPosts,
   addCommenttoData,
   fetchComments,
-  deletePost,
+
+  deletePost
 } = require('../controllers');
 
 router.get('/check-user', checkUser);

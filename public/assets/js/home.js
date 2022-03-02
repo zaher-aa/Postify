@@ -90,6 +90,23 @@ document.addEventListener('click', (e) => {
     .catch((err) => console.log(err));
 });
 
+document.addEventListener('click', (e) => {
+  if (!e.target.matches('.delete')) return;
+  const postId = e.target.parentElement.parentElement.dataset.id;
+  fetch('/delete-post', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ id: postId }),
+  })
+    .then((res) => res.json())
+    .then(() => {
+      e.target.parentElement.parentElement.remove();
+    })
+    .catch((err) => console.log(err));
+});
+
 const renderPost = ((obj) => {
   const post = document.createElement('div');
   post.setAttribute('data-id', obj.id);

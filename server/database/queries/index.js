@@ -4,7 +4,6 @@ const getUserInfo = require('./getUserInfo');
 const getUserPostsQuery = require('./getUserPostsQuery');
 const deletePostQuery = require('./deletePostQuery');
 
-
 module.exports = {
   createUser,
   checkUserQuery,
