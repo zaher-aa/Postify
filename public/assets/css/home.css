@@ -129,6 +129,9 @@ a{
     width: 50%;
     height: 30px;
   }
+  .id{
+    display: none;
+  }
 @media (min-width: 567px) {
     .container {
       width: 550px;

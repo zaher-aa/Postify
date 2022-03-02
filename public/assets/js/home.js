@@ -7,20 +7,47 @@ const image =document.querySelector('.image')
 const caption =document.querySelector('.caption')
 const publicherInfo=document.querySelector('.publicherInfo')
 const posts =document.querySelector('.posts')
+const useridText=document.querySelector('.id')
+const form =document.querySelector('#form')
 
+const passDataToFetch=(postInfo)=>{
+   const username=postInfo.username.value;
+   const url=postInfo.url.value;
+   const content=postInfo.post.value;
+   const id=localStorage.getItem('user_id')
+   
+   addUser({username,url,content,id}, 'POST', '/addPost')
+    .then((data) => console.log(data.id))
+    .catch((err) => alert(err.message));
+
+}
+form.addEventListener('submit',(e)=>{
+   e.preventDefault();
+   const postInfo=e.target;
+   passDataToFetch(postInfo)
+})
 window.onload=()=>{
-
- fetchData('/getPosts').then((data)=>mapPosts(data))}
+getUser('/getPosts').then((data)=>mapPosts(data)).catch((err) => alert(err.message));}
+useridText.value=localStorage.getItem('user_id')
  const mapPosts=(arr)=>{
     arr.map(post=>{
      renderPost(post);
      })
+     const headerPost =document.querySelectorAll('.headerPost')
+     headerPost.forEach((element)=>{
+        element.addEventListener('click',(e)=>{
+         console.log(e.currentTarget.parentElement.dataset.userid);
+     })
+     })
+   
  }
 
 const renderPost=((obj)=>{
-    console.log(obj)
+    
    const post=document.createElement('div')
+   post.setAttribute('data-userid',obj.id);
    post.className='post';
+   
    const headerPost=document.createElement('div')
    headerPost.className='headerPost'
    const publicherInfo=document.createElement('div')
@@ -73,6 +100,7 @@ posts.append(post)
 
 
 plusIcon.addEventListener('click',()=>{
+    
     postForm.style.display ='flex';
     container.style.opacity= 0.2;
  })
