@@ -154,6 +154,58 @@ a{
     font-weight: 600;
   font-size: larger;
   }
+
+
+.commentSection{
+  width: 50%;
+  border:1px solid #d8d8d8;
+}
+.headerCommentSection{
+  width: 100%;
+  border-bottom:1px solid #d8d8d8;
+  height: 40px;
+  padding: 0 20px;
+}
+
+.comment{
+  display: flex;
+  padding:20px;
+
+  
+}
+
+.comment img{
+  padding-top:10px;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+.comment p{
+  margin-right: 10px; 
+}
+#userNmaeComent{
+  font-weight:bold;
+}
+#commentInput{
+  border: 1px solid grey;
+  border-radius: 5px;
+  height: 25px;
+  padding: 5px;
+  width:80%;
+  margin: 10px;
+}
+#btn{
+  height: 5vh;
+  width: 2vw;
+
+  color:  rgb(98, 98, 192);
+ 
+
+  font-size: 17px;
+  border: 1px solid grey;
+
+  border-radius: 5px;
+}
 @media (max-width: 567px) {
     .container {
       width: 550px;
@@ -189,6 +241,7 @@ a{
  
 }
   }
+
   @media (min-width: 768px) {
     .container {
       width: 750px;

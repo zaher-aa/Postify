@@ -9,6 +9,7 @@ const publicherInfo=document.querySelector('.publicherInfo')
 const posts =document.querySelector('.posts')
 const useridText=document.querySelector('.id')
 const form =document.querySelector('#form')
+const commentForm=document.querySelector('#commentForm')
 const addBtn=document.querySelector('.addPost')
 
 const passDataToFetch=(postInfo)=>{
@@ -30,11 +31,29 @@ form.addEventListener('submit',(e)=>{
 })
 
 
+const passData=(commentInfo)=>{
+const content =commentInfo.comment.value
+const id=localStorage.getItem('user_id')
+const postId='1';
+   
+  addUser({content,id, postId} , 'POST', '/addCommit')
+    .then((data) => data)
+   
+    .catch((err) => alert(err.message))
+}
+commentForm.addEventListener('submit',(e)=>{
+   e.preventDefault();
+   const postInfo=e.target;
+   passData(postInfo)
+})
+
+
 window.onload=()=>{
 getUser('/getPosts').then((data)=>mapPosts(data)).catch((err) => alert(err.message));}
 useridText.value=localStorage.getItem('user_id')
  const mapPosts=(arr)=>{
     arr.map(post=>{
+       console.log(post)
      renderPost(post);
      })
      const headerPost =document.querySelectorAll('.headerPost')
@@ -99,6 +118,8 @@ const renderPost=((obj)=>{
 div2.append(caption)
 post.append(headerPost,content)
 posts.append(post)
+
+
 
  })
 

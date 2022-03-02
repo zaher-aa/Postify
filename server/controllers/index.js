@@ -4,6 +4,7 @@ const clientError = require('./clientError');
 const serverError = require('./serverError');
 const addPost=require('./addPost')
 const getPosts=require('./getPost')
+const  addCommenttoData=require('./addComment')
 
 module.exports = {
   checkUser,
@@ -11,5 +12,6 @@ module.exports = {
   clientError,
   serverError,
   addPost,
-  getPosts
+  getPosts,
+  addCommenttoData
 };
