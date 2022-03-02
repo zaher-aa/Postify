@@ -1,4 +1,4 @@
-const checkUserQuery = require('../database/queries/checkUserQuery');
+const { checkUserQuery } = require('../database/queries');
 
 const checkUser = (req, res) => {
   const { email, password } = req.query;

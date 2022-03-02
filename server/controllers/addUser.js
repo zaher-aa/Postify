@@ -1,4 +1,4 @@
-const createUser = require('../database/queries/createUser');
+const { createUser } = require('../database/queries');
 
 const addUser = (req, res) => {
   const { username, email, password } = req.body;
