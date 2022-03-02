@@ -1,6 +1,7 @@
 const plusIcon = document.querySelector('#plus');
 const postForm = document.querySelector('.createPost');
 const closeIcon = document.querySelector('#close');
+const closeIcon2 = document.querySelector('#close2');
 const container = document.querySelector('.posts');
 const title = document.querySelector('.userName');
 const image = document.querySelector('.image');
@@ -10,6 +11,67 @@ const posts = document.querySelector('.posts');
 const useridText = document.querySelector('.id');
 const form = document.querySelector('#form');
 const addBtn = document.querySelector('.addPost');
+const commentForm=document.querySelector('#commentForm')
+const commentsContent =document.querySelector('.commentsContent')
+const commentSection= document.querySelector('.commentSection')
+
+
+
+
+const getAllComments=()=>{
+  commentSection.style.display = 'flex';
+  getUser2('/getCommit').then((data) =>mapComments(data)).catch((err) => console.log(err.message));
+  
+}
+const mapComments = (arr) => {
+  arr.map((comment) => {
+    console.log(comment)
+    renderComment(comment);
+  });
+}
+const passData = (commentInfo) => {
+  let value =commentInfo.comment.value;
+  let user_id=localStorage.getItem('user_id');
+  let post_id='1'
+
+  addUser({
+    value, user_id, post_id
+  }, 'POST', '/addCommit')
+    .then((data) => {
+    
+      renderComment(data[0]);
+    })
+    .catch((err) => console.log(err));
+  
+}
+
+
+
+commentForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const postInfo = e.target;
+  passData(postInfo);
+});
+const renderComment=(comment=>{
+  console.log(comment)
+ 
+  const commentDev=document.createElement('div')
+  commentDev.className="comment"
+  const userImage = document.createElement('img');
+  userImage.src='./assets/users.jpeg';
+  const userName = document.createElement('p');
+  userName.id='userNmaeComent';
+  userName.textContent='farah'
+  const commentText = document.createElement('p');
+  commentText.id="value"
+  console.log('the value',comment.content)
+  commentText.textContent=comment.content;
+  commentDev.append(userImage,userName,commentText)
+  commentsContent.append(commentDev)
+
+})
+
+
 
 const renderPost = ((obj) => {
   const post = document.createElement('div');
@@ -63,7 +125,10 @@ const renderPost = ((obj) => {
   div2.append(caption);
   post.append(headerPost, content);
   posts.append(post);
+  commentIcon.addEventListener('click',getAllComments)
 });
+
+
 
 const passDataToFetch = (postInfo) => {
   const username = postInfo.username.value;
@@ -119,6 +184,13 @@ closeIcon.addEventListener('click', () => {
   plusIcon.style.color = 'rgb(98, 98, 192)';
 });
 
+closeIcon2.addEventListener('click', () => {
+  commentSection.style.display = 'none';
+  container.style.opacity = 1;
+ 
+});
+
+
 document.querySelector('.fa-user').addEventListener('click', () => {
   window.location.href = '/profile';
 });
@@ -129,3 +201,6 @@ fetch(`/user-info/${localStorage.getItem('user_id')}`)
     document.querySelector('.welcome').textContent = `Welcome ${data.username}`;
   })
   .catch((err) => console.log(err.message));
+
+
+

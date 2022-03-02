@@ -1,4 +1,5 @@
-
+const getUser2 = (url) => fetch(url)
+  .then((res) => res.json());
 const getUser = (url) => fetch(url)
   .then((res) => res.json());
 

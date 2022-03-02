@@ -9,6 +9,7 @@ const serverError = require('./serverError');
 const addPost=require('./addPost')
 const getPosts=require('./getPost')
 const  addCommenttoData=require('./addComment')
+const  fetchComments =require('./getComments')
 
 module.exports = {
   checkUser,
@@ -21,5 +22,6 @@ module.exports = {
   serverError,
   addPost,
   getPosts,
-  addCommenttoData
+  addCommenttoData,
+  fetchComments
 };

@@ -11,7 +11,8 @@ const {
   serverError,
   addPost,
   getPosts,
-  addCommenttoData
+  addCommenttoData,
+  fetchComments
 } = require('../controllers');
 
 router.get('/check-user', checkUser);
@@ -23,6 +24,7 @@ router.get('/user-posts/:id', getUserPosts);
 router.get('/getPosts', getPosts);
 router.post('/addPost', addPost);
 router.post('/addCommit',addCommenttoData)
+router.get('/getCommit',fetchComments)
 router.use(clientError);
 router.use(serverError);
 
