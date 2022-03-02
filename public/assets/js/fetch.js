@@ -1,5 +1,4 @@
 
-
 const getUser = (url) => fetch(url)
   .then((res) => res.json());
 

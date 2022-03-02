@@ -17,7 +17,8 @@ const alert = (message) => {
 
 const goToHome = (id) => {
   localStorage.setItem('user_id', id);
-  window.location.href = '/assets/html/home.html';
+
+  window.location.href = '/home';
 };
 
 const register = (username, email, password) => {
