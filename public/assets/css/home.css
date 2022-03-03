@@ -139,7 +139,13 @@ a {
   font-size: larger;
 }
 
+.commentsContent{
+  overflow: auto;
+  height: 80%;
+
+}
 .commentSection{
+ 
   width: 50%;
   border:1px solid #d8d8d8;
   position: fixed;
@@ -150,7 +156,11 @@ a {
   background-color: #FFF;
   height: 80%;
   display: none;
-  overflow: auto;
+  
+}
+
+.commentdiv{
+  width: 100%;
 }
 .headerCommentSection{
   padding:0 40px;
@@ -189,10 +199,15 @@ font-size: 18px;
   width:80%;
   margin: 10px;
 }
-
+.footer{
+  width: 100%;
+}
+#commentForm{
+  width: 100%;
+}
 #btn{
-  height: 5vh;
-  width: 2vw;
+  height: 3vh;
+  width: 3vw;
 
   color:  rgb(98, 98, 192);
  
@@ -201,6 +216,10 @@ font-size: 18px;
   border: 1px solid grey;
 
   border-radius: 5px;
+}
+.footer{
+  position: absolute;
+bottom:0;
 }
 @media (max-width: 567px) {
   .container {
