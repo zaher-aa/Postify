@@ -14,6 +14,12 @@ const addBtn = document.querySelector('.addPost');
 const commentForm=document.querySelector('#commentForm')
 const commentsContent =document.querySelector('.commentsContent')
 const commentSection= document.querySelector('.commentSection')
+fetch(`/user-info/${localStorage.getItem('user_id')}`)
+  .then((res) => res.json())
+  .then((data) => {
+    document.querySelector('.welcome').textContent = `Welcome ${data.username}`;
+  })
+  .catch((err) => console.log(err.message));
 
 
 
@@ -30,6 +36,7 @@ const mapComments = (arr) => {
   });
 }
 const passData = (commentInfo) => {
+
   let value =commentInfo.comment.value;
   let user_id=localStorage.getItem('user_id');
   let post_id='1'
@@ -164,8 +171,12 @@ const renderPost = ((obj) => {
 
 
 const passDataToFetch = (postInfo) => {
-  const username = postInfo.username.value;
-  const url = postInfo.url.value;
+
+  fetch(`/user-info/${localStorage.getItem('user_id')}`)
+  .then((res) => res.json())
+  .then((data) => data.username).then((name)=>{
+    let username = name
+    const url = postInfo.url.value;
   const content = postInfo.post.value;
   const id = localStorage.getItem('user_id');
 
@@ -176,6 +187,12 @@ const passDataToFetch = (postInfo) => {
       renderPost(data[0]);
     })
     .catch((err) => console.log(err));
+  })
+  .catch((err) => console.log(err.message));
+
+  
+  
+  
 };
 
 form.addEventListener('submit', (e) => {
@@ -223,12 +240,6 @@ document.querySelector('.fa-user').addEventListener('click', () => {
   window.location.href = '/profile';
 });
 
-fetch(`/user-info/${localStorage.getItem('user_id')}`)
-  .then((res) => res.json())
-  .then((data) => {
-    document.querySelector('.welcome').textContent = `Welcome ${data.username}`;
-  })
-  .catch((err) => console.log(err.message));
 
 
 
