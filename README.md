@@ -9,7 +9,7 @@ Use Postify to create posts and keep in touch with your fiends.
 
 ---
 ### 📱 Why Postify
-Nowadays, using social media has become a necessary daily activity, and social media is usually used for many purposes
+Nowadays, using social media has become a necessary daily activity, and social media is usually used for many purposes and
 societies need it more, so it is important to develop social media sites
 
 ---
