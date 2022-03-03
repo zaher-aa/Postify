@@ -9,7 +9,8 @@ Use Postify to create posts and keep in touch with your fiends.
 
 ---
 ### 📱 Why Postify
-In the era of technology, progress and prosperity of social media platforms and the high demand for them for various purposes, it has become important to develop a simple and easy-to-use communication site for all different age groups that keeps pace with this development and facilitates the process of publishing diaries
+Nowadays, using social media has become a necessary daily activity, and social media is usually used for many purposes
+societies need it more, so it is important to develop social media sites
 
 ---
 
