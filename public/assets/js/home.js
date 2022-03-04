@@ -11,9 +11,9 @@ const posts = document.querySelector('.posts');
 const useridText = document.querySelector('.id');
 const form = document.querySelector('#form');
 const addBtn = document.querySelector('.addPost');
-const commentForm=document.querySelector('#commentForm')
-const commentsContent =document.querySelector('.commentsContent')
-const commentSection= document.querySelector('.commentSection')
+const commentForm = document.querySelector('#commentForm');
+const commentsContent = document.querySelector('.commentsContent');
+const commentSection = document.querySelector('.commentSection');
 fetch(`/user-info/${localStorage.getItem('user_id')}`)
   .then((res) => res.json())
   .then((data) => {
@@ -21,93 +21,59 @@ fetch(`/user-info/${localStorage.getItem('user_id')}`)
   })
   .catch((err) => console.log(err.message));
 
-
-
-
-const getAllComments=()=>{
+const getAllComments = () => {
   commentSection.style.display = 'flex';
-  getUser2('/getCommit').then((data) =>mapComments(data)).catch((err) => console.log(err.message));
-  
-}
+  getUser2('/comments').then((data) => mapComments(data)).catch((err) => console.log(err.message));
+};
 const mapComments = (arr) => {
   arr.map((comment) => {
-    console.log(comment)
+    console.log(comment);
     renderComment(comment);
   });
-}
+};
 const passData = (commentInfo) => {
-
-  let value =commentInfo.comment.value;
-  let user_id=localStorage.getItem('user_id');
-  let post_id='1'
+  const { value } = commentInfo.comment;
+  const user_id = localStorage.getItem('user_id');
+  const post_id = '1';
 
   addUser({
-    value, user_id, post_id
-  }, 'POST', '/addCommit')
+    value, user_id, post_id,
+  }, 'POST', '/comment')
     .then((data) => {
-    
       renderComment(data[0]);
     })
     .catch((err) => console.log(err));
-  
-}
-
-
+};
 
 commentForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const postInfo = e.target;
   passData(postInfo);
 });
-const renderComment=(comment=>{
-  console.log(comment)
- 
-  const commentDev=document.createElement('div')
-  commentDev.className="comment"
+const renderComment = ((comment) => {
+  console.log(comment);
+
+  const commentDev = document.createElement('div');
+  commentDev.className = 'comment';
   const userImage = document.createElement('img');
-  userImage.src='./assets/users.jpeg';
+  userImage.src = './assets/users.jpeg';
   const userName = document.createElement('p');
-  userName.id='userNmaeComent';
-  userName.textContent='farah'
+  userName.id = 'userNmaeComent';
+  userName.textContent = 'farah';
   const commentText = document.createElement('p');
-  commentText.id="value"
-  console.log('the value',comment.content)
-  commentText.textContent=comment.content;
-  commentDev.append(userImage,userName,commentText)
-  commentsContent.append(commentDev)
-
-})
-
-
-
-document.addEventListener('click', (e) => {
-  if (!e.target.matches('.delete')) return;
-  const postId = e.target.parentElement.parentElement.dataset.id;
-  fetch('/delete-post', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ id: postId }),
-  })
-    .then((res) => res.json())
-    .then(() => {
-      e.target.parentElement.parentElement.remove();
-    })
-    .catch((err) => console.log(err));
+  commentText.id = 'value';
+  console.log('the value', comment.content);
+  commentText.textContent = comment.content;
+  commentDev.append(userImage, userName, commentText);
+  commentsContent.append(commentDev);
 });
 
 document.addEventListener('click', (e) => {
   if (!e.target.matches('.delete')) return;
   const postId = e.target.parentElement.parentElement.dataset.id;
-  fetch('/delete-post', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ id: postId }),
+  fetch(`/post/${postId}`, {
+    method: 'DELETE',
   })
-    .then((res) => res.json())
     .then(() => {
       e.target.parentElement.parentElement.remove();
     })
@@ -165,34 +131,27 @@ const renderPost = ((obj) => {
   div2.append(caption);
   post.append(headerPost, content);
   posts.append(post);
-  commentIcon.addEventListener('click',getAllComments)
+  commentIcon.addEventListener('click', getAllComments);
 });
 
-
-
 const passDataToFetch = (postInfo) => {
-
   fetch(`/user-info/${localStorage.getItem('user_id')}`)
-  .then((res) => res.json())
-  .then((data) => data.username).then((name)=>{
-    let username = name
-    const url = postInfo.url.value;
-  const content = postInfo.post.value;
-  const id = localStorage.getItem('user_id');
+    .then((res) => res.json())
+    .then((data) => data.username).then((name) => {
+      const username = name;
+      const url = postInfo.url.value;
+      const content = postInfo.post.value;
+      const id = localStorage.getItem('user_id');
 
-  addUser({
-    username, url, content, id,
-  }, 'POST', '/addPost')
-    .then((data) => {
-      renderPost(data[0]);
+      addUser({
+        username, url, content, id,
+      }, 'POST', '/post')
+        .then((data) => {
+          renderPost(data[0]);
+        })
+        .catch((err) => console.log(err));
     })
-    .catch((err) => console.log(err));
-  })
-  .catch((err) => console.log(err.message));
-
-  
-  
-  
+    .catch((err) => console.log(err.message));
 };
 
 form.addEventListener('submit', (e) => {
@@ -202,7 +161,7 @@ form.addEventListener('submit', (e) => {
 });
 
 window.onload = () => {
-  getUser('/getPosts').then((data) => mapPosts(data)).catch((err) => alert(err.message));
+  getUser('/all-posts').then((data) => mapPosts(data)).catch((err) => alert(err.message));
 };
 
 useridText.value = localStorage.getItem('user_id');
@@ -232,14 +191,8 @@ closeIcon.addEventListener('click', () => {
 closeIcon2.addEventListener('click', () => {
   commentSection.style.display = 'none';
   container.style.opacity = 1;
- 
 });
-
 
 document.querySelector('.fa-user').addEventListener('click', () => {
   window.location.href = '/profile';
 });
-
-
-
-

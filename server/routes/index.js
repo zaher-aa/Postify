@@ -11,23 +11,22 @@ const {
   serverError,
   addPost,
   getPosts,
-  addCommenttoData,
+  addComment,
   fetchComments,
-
-  deletePost
+  deletePost,
 } = require('../controllers');
 
-router.get('/check-user', checkUser);
-router.post('/register', addUser);
 router.get('/home', homePageHandler);
 router.get('/profile', handleUserProfilePage);
+router.get('/check-user', checkUser);
+router.get('/all-posts', getPosts);
 router.get('/user-info/:id', handleUserInfo);
 router.get('/user-posts/:id', getUserPosts);
-router.get('/getPosts', getPosts);
-router.post('/addPost', addPost);
-router.post('/addCommit',addCommenttoData)
-router.get('/getCommit',fetchComments)
-router.post('/delete-post', deletePost);
+router.get('/comments', fetchComments);
+router.post('/register', addUser);
+router.post('/post', addPost);
+router.post('/comment', addComment);
+router.delete('/post/:id', deletePost);
 router.use(clientError);
 router.use(serverError);
 
