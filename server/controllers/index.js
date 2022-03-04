@@ -1,20 +1,17 @@
-const checkUser = require('./checkUser');
-const addUser = require('./addUser');
-const homePageHandler = require('./homePageHandler');
-const handleUserProfilePage = require('./handleUserProfilePage');
-const handleUserInfo = require('./handleUserInfo');
-const getUserPosts = require('./getUserPosts');
-const clientError = require('./clientError');
-const serverError = require('./serverError');
-
-const addPost=require('./addPost')
-const getPosts=require('./getPost')
-const  addCommenttoData=require('./addComment')
-const  fetchComments =require('./getComments')
-
-
-
-const deletePost = require('./deletePost');
+const { addComment, fetchComments } = require('./comments');
+const { homePageHandler, handleUserProfilePage } = require('./pages');
+const { clientError, serverError } = require('./err');
+const {
+  handleUserInfo,
+  addUser,
+  checkUser,
+} = require('./user');
+const {
+  getUserPosts,
+  getPosts,
+  addPost,
+  deletePost,
+} = require('./posts');
 
 module.exports = {
   checkUser,
@@ -27,7 +24,7 @@ module.exports = {
   serverError,
   addPost,
   getPosts,
-  addCommenttoData,
+  addComment,
   fetchComments,
-  deletePost
+  deletePost,
 };
